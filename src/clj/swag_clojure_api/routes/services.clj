@@ -74,41 +74,41 @@
     (GET "/plus" []
       :return       Long
       :query-params [x :- Long, {y :- Long 1}]
-      :summary      "x+y with query-parameters. y defaults to 1."
+      :summary      "Retorna x+y, se envían como query params. y es 1 por defecto."
       (ok (+ x y)))
 
     (POST "/minus" []
       :return      Long
       :body-params [x :- Long, y :- Long]
-      :summary     "x-y with body-parameters."
+      :summary     "Retorna x-y, se envían en el body params."
       (ok (- x y)))
 
     (GET "/times/:x/:y" []
       :return      Long
       :path-params [x :- Long, y :- Long]
-      :summary     "x*y with path-parameters"
+      :summary     "Retorna x*y, se envían como path params"
       (ok (* x y)))
 
     (POST "/divide" []
       :return      Double
       :form-params [x :- Long, y :- Long]
-      :summary     "x/y with form-parameters"
+      :summary     "Retorna x/y, se envían como form params"
       (ok (/ x y)))
 
     (GET "/power" []
       :return      Long
       :header-params [x :- Long, y :- Long]
-      :summary     "x^y with header-parameters"
+      :summary     "Retorna x^y, se envían como header params"
       (ok (long (Math/pow x y))))
 
     (PUT "/echo" []
       :return   [{:hot Boolean}]
       :body     [body [{:hot Boolean}]]
-      :summary  "echoes a vector of anonymous hotties"
+      :summary  "Imprime un vector de hotties anónimos"
       (ok body))
 
     (POST "/echo" []
       :return   (s/maybe Thingie)
       :body     [thingie (s/maybe Thingie)]
-      :summary  "echoes a Thingie from json-body"
+      :summary  "Imprime una Thingie desde el json-body"
       (ok thingie))))
